@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #F8F8F8;
+    margin: 0;
+    padding: 24px;
+}
+
+.brand-checkbox {
+    display: none;}
+
+.brands-header h1 {
+    color: #7E7E7E;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.brand-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 32px;
+    max-height: 160px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) and (max-width: 1119px) {
+    .brand-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-height: 160px; 
+    }
+}
+
+.brand-checkbox:checked ~ .brand-slider .brand-container {
+    max-height: 2000px;}
+.expand-button .show-text { display: flex; }
+.expand-button .hide-text { display: none; }
+.brand-checkbox:checked ~ .expand-button .show-text { display: none; }
+.brand-checkbox:checked ~ .expand-button .hide-text { display: flex; align-items: center; gap: 8px; }
+
+.brand-card {
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.brand-card img:not(.go-icon) {
+    max-height: 32px;
+    max-width: 100px;
+}
+
+.brand-details {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color:  #1B1C21;
+}
+
+@media (max-width: 767px) {
+    .brand-container {
+        display: flex;
+        max-height: none;
+        overflow: visible;
+    }
+    .brand-card {
+        width: 240px;
+    }
+    .expand-button { display: none; }
+
+    .brand-slider {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0; }
+
+    .swiper-pagination {
+        position: relative !important; 
+        bottom: 0 !important;         
+        margin-top: 16px;          
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: #B5B5B5;
+        opacity: 1;
+        margin: 0 6px !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: #7E7E7E;
+    }
+}
+
+@media (min-width: 768px) {
+    .swiper-pagination {
+        display: none;
+    }
+}
