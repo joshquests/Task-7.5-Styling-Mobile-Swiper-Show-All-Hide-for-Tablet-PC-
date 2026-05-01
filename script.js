@@ -1,27 +1,38 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let swiperInstance = null;
 
-    function initSlider() {
-        const isMobile = window.innerWidth < 768;
+const swiperBrands = new Swiper('.brand-slider', {
+  direction: 'horizontal',
+  loop: true,
+  spaceBetween: 16,
+  slidesPerView: 'auto',
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
 
-        if (isMobile && !swiperInstance) {
-            // Initialize Swiper for mobile
-            swiperInstance = new Swiper('.brand-slider', {
-                slidesPerView: 'auto',
-                spaceBetween: 16,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        } else if (!isMobile && swiperInstance) {
-            // Destroy Swiper for Desktop/Tablet
-            swiperInstance.destroy(true, true);
-            swiperInstance = null;
-        }
+    
+  },
+  breakpoints: {
+    1024: {
+      enabled: false,
     }
+  }
+});
 
-    // Run on load and on resize
-    initSlider();
-    window.addEventListener('resize', initSlider);
+document.querySelectorAll('.expand-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const targetContainer = document.getElementById(targetId);
+        
+        const isExpanded = targetContainer.classList.toggle('is-expanded');
+
+        const showSpan = button.querySelector('.show-text');
+        const hideSpan = button.querySelector('.hide-text');
+
+        if (isExpanded) {
+            showSpan.style.display = 'none';      
+            hideSpan.style.display = 'flex';      
+        } else {
+            showSpan.style.display = 'flex';      
+            hideSpan.style.display = 'none';     
+        }
+    });
 });

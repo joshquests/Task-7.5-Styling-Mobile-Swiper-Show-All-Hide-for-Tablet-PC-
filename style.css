@@ -1,85 +1,122 @@
 @font-face {
   font-family: "Roboto";
   src: url("fonts/Roboto-Regular.woff2") format("woff2");
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #F8F8F8;
-    margin: 0;
-    padding: 24px;
+  box-sizing: border-box;
 }
 
-.brand-checkbox {
-    display: none;}
-
-.brands-header h1 {
-    color: #7E7E7E;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 24px;
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+  padding: 24px;
+}
+header {
+  color: #7e7e7e;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  background: white;
+  padding: 20px;
+  line-height: 24px;
 }
 
 .brand-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  max-height: none;
+  overflow: visible;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.brand-card {
+  width: 240px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 240px;
+  margin: 0 !important;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.brand-details {
+  border: none;
+  background: none;
+}
+
+  .brand-details:hover {
+     transform: scale(1.1);
+    cursor: pointer;
+  }
+
+.expand-button {
+  display: none;
+}
+
+.brand-slider {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+}
+
+.swiper-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; 
+  }
+
+.swiper-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  gap: 10px;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #b5b5b5;
+  opacity: 0.5;
+  margin: 0 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #7e7e7e;
+}
+
+@media (min-width: 768px) {
+
+  .brand-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px 32px;
     max-height: 160px;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
-}
+  }
 
-@media (min-width: 768px) and (max-width: 1119px) {
-    .brand-container {
-        grid-template-columns: repeat(3, 1fr);
-        max-height: 160px; 
-    }
-}
+  .brand-container.is-expanded {
+        max-height: 1000px;}
 
-.brand-checkbox:checked ~ .brand-slider .brand-container {
-    max-height: 2000px;}
-.expand-button .show-text { display: flex; }
-.expand-button .hide-text { display: none; }
-.brand-checkbox:checked ~ .expand-button .show-text { display: none; }
-.brand-checkbox:checked ~ .expand-button .hide-text { display: flex; align-items: center; gap: 8px; }
-
-.brand-card {
-    background: #FFFFFF;
-    border: 1px solid #EAEAEA;
-    border-radius: 6px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-    box-sizing: border-box;
-}
-
-.brand-card img:not(.go-icon) {
-    max-height: 32px;
-    max-width: 100px;
-}
-
-.brand-details {
-    width: 40px;
-    height: 40px;
-    border: 2px solid white;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.expand-button {
+  .expand-button {
     background: none;
     border: none;
     cursor: pointer;
@@ -89,47 +126,87 @@ body {
     margin-top: 24px;
     font-size: 16px;
     font-weight: 500;
-    color:  #1B1C21;
+    color: #1b1c21;
+    margin-bottom: 24px;
+  }
+
+  .expand-button .hide-text {
+  display: none;
 }
 
-@media (max-width: 767px) {
-    .brand-container {
-        display: flex;
-        max-height: none;
-        overflow: visible;
-    }
-    .brand-card {
-        width: 240px;
-    }
-    .expand-button { display: none; }
-
-    .brand-slider {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 0; }
-
-    .swiper-pagination {
-        position: relative !important; 
-        bottom: 0 !important;         
-        margin-top: 16px;          
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background: #B5B5B5;
-        opacity: 1;
-        margin: 0 6px !important;
-    }
-    .swiper-pagination-bullet-active {
-        background: #7E7E7E;
-    }
+.expand-button span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-@media (min-width: 768px) {
-    .swiper-pagination {
-        display: none;
-    }
+.swiper-pagination {
+  display: none;
+
+
 }
+
+@media (min-width: 1024px) {
+  header h1 {
+    white-space: nowrap;
+    font-size: 16px; 
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  .brand-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 32px;
+    max-height: 160px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .brand-container.is-expanded {
+    max-height: 2000px;
+  }
+
+  .brand-slider .swiper-wrapper {
+    display: grid !important; 
+    gap: 16px 32px;
+    transform: none !important; 
+    width: 100% !important;
+  }
+
+  .brand-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: auto; 
+    margin: 0 !important;
+  }
+
+  .brand-card img:not(.go-icon) {
+    max-height: 32px;
+    max-width: 100px;
+  }
+
+  
+  .brand-details {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.swiper-pagination {
+  display: none;
+}
+
+}}
